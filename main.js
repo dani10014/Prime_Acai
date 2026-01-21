@@ -64,17 +64,23 @@ document.addEventListener("click", function (event) {
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento1" data-preco="5000" checked>
-                                    <label class="form-check-label" for="acompanhamento1">300 Ml (5.000 Gs)</label>
+                                    <label class="form-check-label" for="acompanhamento1">300 Ml <p class="alert alert-danger p-1 ">(5.000 Gs)</p></label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento2" data-preco="10000">
-                                    <label class="form-check-label" for="acompanhamento2">500 Ml (10.000 Gs)</label>
+                                    <label class="form-check-label" for="acompanhamento2">500 Ml <p class="alert alert-danger p-1 ">(10.000 Gs)</p></label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento3" data-preco="15000">
+                                    <label class="form-check-label" for="acompanhamento3">1 Litro <p class="alert alert-danger p-1 ">(15.000 Gs)</p></label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check form-switch mb-2 invisible">
                                     <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento3" data-preco="15000">
                                     <label class="form-check-label" for="acompanhamento3">1 Litro (15.000 Gs)</label>
                                 </div>

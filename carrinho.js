@@ -294,30 +294,50 @@ btnFinalizarPedido.addEventListener("click", function(event) {
         return;
     }
 
-    let mensagem = `Olá, me chamo *${nome}* e gostaria de fazer um pedido:\n\n`;
+    let mensagem = `👋 *Olá! Novo Pedido Chegando!* 🛒\n\n`;
+    mensagem += `👤 *Cliente:* ${nome}\n`;
+    mensagem += `----------------------------------\n`;
+    mensagem += `📝 *RESUMO DO PEDIDO:*\n\n`;
 
     dadosProdutos.forEach((produto, index) => {
-        mensagem += `*Item ${index + 1}:* ${produto.nome} (${produto.ml})\n`;
-        if (produto.acompanhamentos && produto.acompanhamentos.length > 0) mensagem += `  + Acomp: ${produto.acompanhamentos.join(", ")}\n`;
-        if (produto.adicionais && produto.adicionais.length > 0) mensagem += `  + Extras: ${produto.adicionais.join(", ")}\n`;
-        mensagem += `  Valor: ${produto.preco}\n\n`;
+        mensagem += `🔹 *Item ${index + 1}:* ${produto.nome}\n`;
+        mensagem += `   📏 *Tamanho:* ${produto.ml}\n`;
+        
+        if (produto.acompanhamentos && produto.acompanhamentos.length > 0) {
+            mensagem += `   ✅ *Acomp:* ${produto.acompanhamentos.join(", ")}\n`;
+        }
+        
+        if (produto.adicionais && produto.adicionais.length > 0) {
+            mensagem += `   ➕ *Extras:* ${produto.adicionais.join(", ")}\n`;
+        }
+        
+        mensagem += `   💰 *Valor:* ${produto.preco}\n\n`;
     });
-    mensagem += `*Taxa de Entrega:* Gs ${TAXA_ENTREGA.toLocaleString('pt-BR')}\n`;
+
+    mensagem += `----------------------------------\n`;
+    mensagem += `🛵 *Taxa de Entrega:* Gs ${TAXA_ENTREGA.toLocaleString('pt-BR')}\n`;
 
     let totalReais = total / TAXA_CAMBIO;
-    mensagem += `*Total a Pagar:* Gs ${total.toLocaleString('pt-BR')} (R$ ${totalReais.toLocaleString('pt-BR', {minimumFractionDigits: 2})})\n`;
-    if (endereco) mensagem += `*Endereço:* ${endereco}\n`;
+    mensagem += `💵 *TOTAL A PAGAR:* *Gs ${total.toLocaleString('pt-BR')}*\n`;
+    mensagem += `   (Aprox. R$ ${totalReais.toLocaleString('pt-BR', {minimumFractionDigits: 2})})\n`;
     
-    mensagem += `*Pagamento:* ${metodoPagamentoSelecionado}\n`;
+    mensagem += `----------------------------------\n`;
+    mensagem += `💳 *PAGAMENTO:*\n`;
+    mensagem += `   📌 *Forma:* ${metodoPagamentoSelecionado}\n`;
     
     if (metodoPagamentoSelecionado === "Dinheiro/Entrega") {
         let valorTroco = inputTroco.value;
         if (valorTroco.trim() !== "") {
-            mensagem += `*Troco para:* ${valorTroco}\n`;
+            mensagem += `   🔄 *Troco para:* ${valorTroco}\n`;
         } else {
-            mensagem += `*Troco:* Não precisa\n`;
+            mensagem += `   🔄 *Troco:* Não precisa\n`;
         }
     }
+
+    mensagem += `----------------------------------\n`;
+    mensagem += `📍 *ENDEREÇO DE ENTREGA:*\n`;
+    mensagem += `${endereco}\n`;
+    mensagem += `----------------------------------\n`;
 
     let numeroWhatsApp = "5567991070222"; 
     let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
