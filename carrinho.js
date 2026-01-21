@@ -338,6 +338,7 @@ btnFinalizarPedido.addEventListener("click", function(event) {
     mensagem += `📍 *ENDEREÇO DE ENTREGA:*\n`;
     mensagem += `${endereco}\n`;
     mensagem += `----------------------------------\n`;
+    mensagem += `⏳ *Aguarde a confirmação do seu pedido!*\n`;
 
     let numeroWhatsApp = "5567991070222"; 
     let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;

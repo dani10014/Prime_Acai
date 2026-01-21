@@ -86,11 +86,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">5000 Gs</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">5000 Gs</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
                 }else if(nomeProdutoCheck.includes("salgadinhos")){
@@ -134,11 +136,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
                 }else if(nomeProdutoCheck.includes("salgado-assado")){
@@ -176,11 +180,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
                 }else if(nomeProdutoCheck.includes("salgado")){
@@ -224,11 +230,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
             }else if(nomeProdutoCheck.includes("frango-batata")){
@@ -260,11 +268,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">50000 Gs</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">50000 Gs</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
             }else if(nomeProdutoCheck.includes("sabor-unico")){
@@ -430,11 +440,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
             }else{
@@ -444,6 +456,7 @@ document.addEventListener("click", function (event) {
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
+                        <h5 class="alert alert-danger text-center">Por favor, escolha os acompanhamentos</h5>
                         <h5 class="text-center border-bottom pb-2">Escolha seus acompanhamentos</h5>
                         <div class="row text-start p-2 justify-content-center" style="background-color: rgb(255, 255, 255); color:black; border-radius:10px;">
                             <div class="col-6">
@@ -522,11 +535,13 @@ document.addEventListener("click", function (event) {
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
-                            <span class="fw-bold">Total:</span>
-                            <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">${valorProduto}</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
-                        <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                     </div>
                 </div>`;
             }
@@ -589,15 +604,35 @@ document.addEventListener("click", function (event) {
                 let inputsAcompanhamentos = Produto.querySelectorAll(".form-check-input:not(.input-adicionais)");
                 let inputsAdicionais = Produto.querySelectorAll(".input-adicionais");
 
+                let mlSelecionado = Produto.querySelector(".alert-info").innerHTML;
+
+                // Verifica se é Suco e pega o tamanho selecionado (removendo o preço)
+                let inputMlSuco = Produto.querySelector('input[name="Ml-suco"]:checked');
+                if (inputMlSuco) {
+                    let label = Produto.querySelector(`label[for="${inputMlSuco.id}"]`);
+                    if (label && label.firstChild) {
+                        mlSelecionado = label.firstChild.textContent.trim();
+                    }
+                }
+
+                // Verifica se é Frango e pega o tamanho selecionado
+                let inputTamanhoFrango = Produto.querySelector('input[name="tamanho-frango"]:checked');
+                if (inputTamanhoFrango) {
+                    let label = Produto.querySelector(`label[for="${inputTamanhoFrango.id}"]`);
+                    if (label) {
+                        mlSelecionado = label.innerText.trim();
+                    }
+                }
+
                 let dadosProduto = {
                     imagem: Produto.querySelector(".card-img-top").getAttribute("src"),
                     nome: Produto.querySelector(".card-title").innerHTML,
-                    ml: Produto.querySelector(".alert-info").innerHTML,
+                    ml: mlSelecionado,
                     preco: Produto.querySelector("#preco-total").innerText
                 }
 
                 let listaAcompanhamentos = Array.from(inputsAcompanhamentos)
-                    .filter(input => input.checked)
+                    .filter(input => input.checked && input.name !== 'Ml-suco' && input.name !== 'tamanho-frango')
                     .map(input => input.nextElementSibling.innerText);
                 
                 let listaAdicionais = Array.from(inputsAdicionais)
