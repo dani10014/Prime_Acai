@@ -340,7 +340,17 @@ main .alerta{
 .acompanhamentos-ativo{
     display: block;
 }
-
+.contador-de-produtos{
+    position: absolute;
+    top:25px;
+    font-size: 22px;
+    color: rgba(255, 64, 64, 0.897);
+    right: 45px;
+    z-index: 40;
+}
+.contador-desativado{
+    display: none;;
+}
 @media(min-width: 768px){
     main{
         margin-top: 330px;

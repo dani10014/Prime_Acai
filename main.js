@@ -5,7 +5,20 @@ let horario = document.getElementById("horario");
 let mensagemAberto = document.getElementById("aberto")
 let mensagemFechado = document.getElementById("meuModal")
 let alertaAdicao = document.querySelector(".alerta")
+let contadorCarrinho = document.querySelector(".contador-de-produtos");
 
+function atualizarContador() {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    if (contadorCarrinho) {
+        contadorCarrinho.innerText = carrinho.length;
+    }
+    if(contadorCarrinho === 0){
+        contadorCarrinho.style.display = "none";
+    }
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
 
 function atualizarHora(){
 
@@ -276,7 +289,7 @@ document.addEventListener("click", function (event) {
                             <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>
                     </div>
-                </div>`;
+                </div>`
             }else if(nomeProdutoCheck.includes("sabor-unico")){
                     let produtoSelecionado = secaoAdicionarAcompanhamento;
                     

@@ -97,7 +97,7 @@ dadosProdutos.forEach((dadosProduto, index) => {
     }
 
     let html = `
-    <div class="col-12 col-md-8 mb-3">
+    <div class="col-12 col-md-8 mb-3 cards">
         <div class="card shadow-sm border-0 rounded-3">
             <div class="card-body p-3">
                 <div class="row g-3 align-items-center">
@@ -244,6 +244,19 @@ botaoAdicionarMais.forEach(button => {
 
     })
 });
+        function atualizarProdutosCarrinho(){
+            let produtosExistentes = document.querySelectorAll(".cards").length;
+            
+            if(produtosExistentes > 0){
+                localStorage.setItem("produtosExistentes", produtosExistentes);
+            }
+            console.log(produtosExistentes);
+            
+        }   
+
+    setInterval(atualizarProdutosCarrinho, 1000);
+
+
 
 btnLocalizacao.addEventListener("click", () => {
     if (navigator.geolocation) {
