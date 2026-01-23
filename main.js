@@ -115,37 +115,43 @@ document.addEventListener("click", function (event) {
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
-                        <h5 class="alert alert-danger text-center">Por favor selecione a quantidade de pasteis após adicionar ao seu carrinho</h5>
-                        <h5 class="text-center border-bottom pb-2">Escolha o recheio</h5>
+                        <h5 class="alert alert-danger text-center">Escolha os sabores de sua preferência</h5>
+                        <h5 class="text-center border-bottom pb-2">Sabores</h5>
                         <div class="row text-start p-2 justify-content-center" style="background-color: rgb(255, 255, 255); color:black; border-radius:10px;">
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="pastel-recheio" type="radio" id="acompanhamento1">
-                                    <label class="form-check-label" for="acompanhamento1">Coxinha de fr</label>
+                                    <input class="form-check-input" name="pastel-recheio" type="checkbox" id="salg1">
+                                    <label class="form-check-label" for="salg1">Coxinha de frango</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="pastel-recheio" type="radio" id="acompanhamento2">
-                                    <label class="form-check-label" for="acompanhamento2">Croquete de calab.</label>
+                                    <input class="form-check-input" name="pastel-recheio" type="checkbox" id="salg2">
+                                    <label class="form-check-label" for="salg2">Croquete de calabresa</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="pastel-recheio" type="radio" id="acompanhamento3">
-                                    <label class="form-check-label" for="acompanhamento3">Bolinha de queijo</label>
+                                    <input class="form-check-input" name="pastel-recheio" type="checkbox" id="salg3">
+                                    <label class="form-check-label" for="salg3">Coxinha de carne</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="pastel-recheio" type="radio" id="acompanhamento4">
-                                    <label class="form-check-label" for="acompanhamento4">Kibe</label>
+                                    <input class="form-check-input" name="pastel-recheio" type="checkbox" id="salg4">
+                                    <label class="form-check-label" for="salg4">Bolinha de queijo</label>
                                 </div>
                             </div>
-                            <div class="col-6 invisible">
+                            <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="pastel-recheio" type="radio" id="acompanhamento4">
-                                    <label class="form-check-label" for="acompanhamento4">Enroladinho de salsicha</label>
+                                    <input class="form-check-input" name="pastel-recheio" type="checkbox" id="salg5">
+                                    <label class="form-check-label" for="salg5">Kibe</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" name="pastel-recheio" type="checkbox" id="salg6">
+                                    <label class="form-check-label" for="salg6">Enroladinho de salsicha</label>
                                 </div>
                             </div>
                         </div>
