@@ -234,7 +234,6 @@ main .alerta{
     color: rgb(75, 0, 119);
     opacity: 1;
 }
-
 .adicionar-carrinho {
     font-size: 12px;
     font-weight: bold;
@@ -378,6 +377,7 @@ main .alerta{
 .contador-desativado{
     display: none;;
 }
+
 @media(min-width: 768px){
     main{
         margin-top: 330px;

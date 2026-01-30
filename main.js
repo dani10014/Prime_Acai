@@ -6,6 +6,7 @@ let mensagemAberto = document.getElementById("aberto")
 let mensagemFechado = document.getElementById("meuModal")
 let alertaAdicao = document.querySelector(".alerta")
 let contadorCarrinho = document.querySelector(".contador-de-produtos");
+let modalBootstrap;
 
 function atualizarContador() {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
@@ -35,12 +36,19 @@ function atualizarHora(){
     horario.innerHTML = horarioFormatado;
 
     let horaAtual = agora.getHours();
+
+    if (!modalBootstrap && mensagemFechado) {
+        modalBootstrap = new bootstrap.Modal(mensagemFechado);
+    }
+
     if (horaAtual > 5 && horaAtual < 22) {
         mensagemAberto.classList.add("aberto-ativo");
         mensagemFechado.classList.remove("fechado-ativo");
-    } else {
+        if (modalBootstrap) modalBootstrap.hide();
+    }else {
         mensagemAberto.classList.remove("aberto-ativo");
         mensagemFechado.classList.add("fechado-ativo");
+        if (modalBootstrap && !mensagemFechado.classList.contains('show')) modalBootstrap.show();
     }
 }
 setInterval(atualizarHora, 1000);
@@ -765,7 +773,6 @@ $(document).ready(function() {
         dots: true,
         infinite: false,
         touchThreshold:10,
-        swipeToSlide: true,
     });
 
     // Exibir preço em Reais nos cards
