@@ -218,9 +218,12 @@ main .alerta{
 .overlay-ativo {
     display: block;
 }
-
+.carrosel{
+    touch-action: pan-y;
+}
 .cards-açai {
     margin-bottom: 50px;
+    touch-action: pan-y;
 }
 .cards-açai .slick-dots li button:before {
     font-size: 7px;

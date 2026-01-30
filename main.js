@@ -755,6 +755,7 @@ $(document).ready(function() {
         arrows:false,
         speed:800,
         autoplay:true,
+        touchThreshold:10,
 
     });
     $(".cards-açai").slick({
@@ -763,6 +764,8 @@ $(document).ready(function() {
         arrows: false,
         dots: true,
         infinite: false,
+        touchThreshold:10,
+        swipeToSlide: true,
     });
 
     // Exibir preço em Reais nos cards
