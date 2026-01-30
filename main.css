@@ -39,7 +39,7 @@ header .container-cabecalho #logo{
 header .texto-abaixo-cabecalho{
     display: flex;
     justify-content: center;
-    color: #bebebe;
+    color: #ffffff;
 } 
 header #horario{
     font-size: 18px;
@@ -63,7 +63,7 @@ header .texto-abaixo-cabecalho p{
     text-transform:capitalize;
 }
 main{
-    margin-top: 130px;
+    margin-top: 110px;
 }
 main .container-conteudo-principal{
     display: flex;
@@ -91,13 +91,24 @@ main .container-conteudo-principal .bloco-nome{
     cursor: pointer;
     transition: transform 0.3s;
 }
-main .container-conteudo-principal img{
-    width: 100%;
+.icone-nav {
     height: 90px;
-    object-fit: contain;
-    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+    width: 90px;
+    font-size: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
     margin-bottom: 5px;
-    border-radius: 10px;
+}
+.icone-nav img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.icone-nav .img-acai {
+    padding: 15px;
 }
 main .container-conteudo-principal p {
     font-weight: bold;

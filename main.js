@@ -10,15 +10,19 @@ let contadorCarrinho = document.querySelector(".contador-de-produtos");
 function atualizarContador() {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     if (contadorCarrinho) {
-        contadorCarrinho.innerText = carrinho.length;
-    }
-    if(contadorCarrinho === 0){
-        contadorCarrinho.style.display = "none";
+        const totalItens = carrinho.length;
+        contadorCarrinho.innerText = totalItens;
+
+        if (totalItens > 0) {
+            contadorCarrinho.classList.remove('contador-desativado');
+        } else {
+            contadorCarrinho.classList.add('contador-desativado');
+        }
     }
 }
-
 setInterval(atualizarContador, 1000);
 atualizarContador();
+
 
 function atualizarHora(){
 
@@ -76,20 +80,20 @@ document.addEventListener("click", function (event) {
                         <div class="row text-start p-2 justify-content-center" style="background-color: rgb(255, 255, 255); color:black; border-radius:10px;">
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento1" data-preco="5000" checked>
-                                    <label class="form-check-label" for="acompanhamento1">300 Ml <p class="alert alert-danger p-1 ">(5.000 Gs)</p></label>
+                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento1" data-preco="10000" checked>
+                                    <label class="form-check-label" for="acompanhamento1">300 Ml <p class="alert alert-danger p-1 ">(10.000 Gs)</p></label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento2" data-preco="10000">
-                                    <label class="form-check-label" for="acompanhamento2">500 Ml <p class="alert alert-danger p-1 ">(10.000 Gs)</p></label>
+                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento2" data-preco="15000">
+                                    <label class="form-check-label" for="acompanhamento2">500 Ml <p class="alert alert-danger p-1 ">(15.000 Gs)</p></label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento3" data-preco="15000">
-                                    <label class="form-check-label" for="acompanhamento3">1 Litro <p class="alert alert-danger p-1 ">(15.000 Gs)</p></label>
+                                    <input class="form-check-input" name="Ml-suco" type="radio" id="acompanhamento3" data-preco="25000">
+                                    <label class="form-check-label" for="acompanhamento3">1 Litro <p class="alert alert-danger p-1 ">(25.000 Gs)</p></label>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -102,7 +106,7 @@ document.addEventListener("click", function (event) {
                         <div class="sticky-footer">
                             <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
                                 <span class="fw-bold">Total:</span>
-                                <span class="fw-bold" id="preco-total">5000 Gs</span>
+                                <span class="fw-bold" id="preco-total">10000 Gs</span>
                             </div>
                             <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
                         </div>

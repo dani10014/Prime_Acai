@@ -244,17 +244,6 @@ botaoAdicionarMais.forEach(button => {
 
     })
 });
-        function atualizarProdutosCarrinho(){
-            let produtosExistentes = document.querySelectorAll(".cards").length;
-            
-            if(produtosExistentes > 0){
-                localStorage.setItem("produtosExistentes", produtosExistentes);
-            }
-            console.log(produtosExistentes);
-            
-        }   
-
-    setInterval(atualizarProdutosCarrinho, 1000);
 
 
 
@@ -311,20 +300,24 @@ btnFinalizarPedido.addEventListener("click", function(event) {
     mensagem += `👤 *Cliente:* ${nome}\n`;
     mensagem += `----------------------------------\n`;
     mensagem += `📝 *RESUMO DO PEDIDO:*\n\n`;
+    
+    let cardsProdutos = document.querySelectorAll(".cards");
 
     dadosProdutos.forEach((produto, index) => {
-        mensagem += `🔹 *Item ${index + 1}:* ${produto.nome}\n`;
+        const card = cardsProdutos[index];
+        const quantidade = card.querySelector(".quantidade").innerText;
+        const valorTotalItem = card.querySelector(".valor").innerText;
+
+        mensagem += `🔹 *Item ${index + 1}:* ${produto.nome} (*${quantidade}x*)\n`;
         mensagem += `   📏 *Tamanho:* ${produto.ml}\n`;
         
         if (produto.acompanhamentos && produto.acompanhamentos.length > 0) {
             mensagem += `   ✅ *Acomp:* ${produto.acompanhamentos.join(", ")}\n`;
         }
-        
         if (produto.adicionais && produto.adicionais.length > 0) {
             mensagem += `   ➕ *Extras:* ${produto.adicionais.join(", ")}\n`;
         }
-        
-        mensagem += `   💰 *Valor:* ${produto.preco}\n\n`;
+        mensagem += `   💰 *Subtotal:* ${valorTotalItem}\n\n`;
     });
 
     mensagem += `----------------------------------\n`;
