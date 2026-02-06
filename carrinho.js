@@ -86,14 +86,27 @@ if(dadosProdutos.length === 0){
 }
 dadosProdutos.forEach((dadosProduto, index) => {
     let listaAcompanhamentos = "";
+    let mostrarAcompanhamentos = false;
+
     if (dadosProduto.acompanhamentos && Array.isArray(dadosProduto.acompanhamentos) && dadosProduto.acompanhamentos.length > 0) {
         listaAcompanhamentos = dadosProduto.acompanhamentos.map(item => `<li>${item}</li>`).join("");
+        mostrarAcompanhamentos = true;
     } else {
-        listaAcompanhamentos = "<li class='text-muted small' style='list-style:none'><em>Somente açaí (sem acompanhamentos)</em></li>";
+        if (dadosProduto.nome.toLowerCase().includes("açaí") || dadosProduto.nome.toLowerCase().includes("acai")) {
+            listaAcompanhamentos = "<li class='text-muted small' style='list-style:none'><em>Somente açaí (sem acompanhamentos)</em></li>";
+            mostrarAcompanhamentos = true;
+        }
     }
     let listaAdicionais = "";
     if (dadosProduto.adicionais && Array.isArray(dadosProduto.adicionais) && dadosProduto.adicionais.length > 0) {
         listaAdicionais = dadosProduto.adicionais.map(item => `<li>${item}</li>`).join("");
+    }
+
+    let midiaHtml = "";
+    if (dadosProduto.imagem && dadosProduto.imagem.endsWith(".mp4")) {
+        midiaHtml = `<video src="${dadosProduto.imagem}" class="img-fluid rounded" style="max-height: 140px; object-fit: contain;" autoplay muted loop playsinline></video>`;
+    } else {
+        midiaHtml = `<img src="${dadosProduto.imagem}" class="img-fluid rounded" style="max-height: 140px; object-fit: contain;">`;
     }
 
     let html = `
@@ -102,7 +115,7 @@ dadosProdutos.forEach((dadosProduto, index) => {
             <div class="card-body p-3">
                 <div class="row g-3 align-items-center">
                     <div class="col-4 text-center">
-                        <img src="${dadosProduto.imagem}" class="img-fluid rounded" style="max-height: 140px; object-fit: contain;">
+                        ${midiaHtml}
                     </div>
                     
                     <div class="col-8">
@@ -114,12 +127,12 @@ dadosProdutos.forEach((dadosProduto, index) => {
                             <button class="btn btn-sm btn-outline-danger excluir border-0" data-index="${index}" title="Remover item">✕</button>
                         </div>
 
-                        <div class="mb-2">
+                        ${mostrarAcompanhamentos ? `<div class="mb-2">
                             <small class="fw-bold text-secondary">Acompanhamentos:</small>
                             <ul class="list-unstyled small mb-0 ps-2 border-start border-3 border-light text-muted">
                                 ${listaAcompanhamentos}
                             </ul>
-                        </div>
+                        </div>` : ''}
 
                         ${listaAdicionais ? `
                         <div class="mb-2">

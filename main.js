@@ -67,10 +67,20 @@ document.addEventListener("click", function (event) {
     if (event.target.matches(".adicionar-carrinho")) {
 
         const secaoAdicionarAcompanhamento = event.target.closest(".card");
-            const imgSrc = secaoAdicionarAcompanhamento.querySelector(".carrosel img").getAttribute("src");
+            const mediaElement = secaoAdicionarAcompanhamento.querySelector(".carrosel img") || secaoAdicionarAcompanhamento.querySelector(".carrosel video");
+            const imgSrc = mediaElement ? mediaElement.getAttribute("src") : "";
             const nomeProduto = secaoAdicionarAcompanhamento.querySelector(".card-title").innerHTML;
             const mlDoProduto = secaoAdicionarAcompanhamento.querySelector(".alert-info").innerHTML;
             const valorProduto = secaoAdicionarAcompanhamento.querySelector(".valor").innerHTML;
+            
+            // Verifica se é vídeo ou imagem para exibir corretamente no modal
+            let midiaModalHtml = "";
+            if (imgSrc && imgSrc.endsWith(".mp4")) {
+                midiaModalHtml = `<video src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;" autoplay muted loop playsinline></video>`;
+            } else {
+                midiaModalHtml = `<img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">`;
+            }
+
         if (secaoAdicionarAcompanhamento) {
 
             const elementoTitulo = secaoAdicionarAcompanhamento.querySelector(".card-title");
@@ -79,7 +89,7 @@ document.addEventListener("click", function (event) {
         if(nomeProdutoCheck.includes("suco")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -123,7 +133,7 @@ document.addEventListener("click", function (event) {
                 }else if(nomeProdutoCheck.includes("salgado-assado")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -167,7 +177,7 @@ document.addEventListener("click", function (event) {
                 }else if(nomeProdutoCheck.includes("salgado")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -217,7 +227,7 @@ document.addEventListener("click", function (event) {
             }else if(nomeProdutoCheck.includes("pastel-especial")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -281,7 +291,7 @@ document.addEventListener("click", function (event) {
             }else if(nomeProdutoCheck.includes("frango-batata")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -326,7 +336,7 @@ document.addEventListener("click", function (event) {
                         nome:produtoSelecionado.querySelector(".card-title").innerHTML,
                         ml:produtoSelecionado.querySelector(".alert-info").innerText,
                         preco:produtoSelecionado.querySelector(".valor").innerText,
-                        imagem:produtoSelecionado.querySelector(".carrosel img").getAttribute("src"),
+                        imagem: imgSrc,
                         acompanhamentos: listaIngredientes
                     };
                     
@@ -342,7 +352,7 @@ document.addEventListener("click", function (event) {
             }else if(nomeProdutoCheck.includes("geladinho-gourmet")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -395,7 +405,7 @@ document.addEventListener("click", function (event) {
             }else if(nomeProdutoCheck.includes("completo")){
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
@@ -544,7 +554,7 @@ document.addEventListener("click", function (event) {
             }else{
                 modalHTML = `
                 <div class="card text-white" style="background-color: rgb(75, 0, 119);">
-                    <img src="${imgSrc}" class="card-img-top" style="height: 120px; object-fit: cover;">
+                    ${midiaModalHtml}
                     <div class="card-body">
                         <h5 class="card-title text-center">${nomeProduto}</h5>
                         <p class="alert alert-info text-center small">${mlDoProduto}</p>
