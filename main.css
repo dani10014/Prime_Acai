@@ -84,6 +84,9 @@ header #horario{
 .icone-refrigerante{
     color: rgb(139, 0, 0);
 }
+.aviso-ilustrativa{
+    color: rgb(128, 7, 7);
+}
 header .texto-abaixo-cabecalho p{
     padding-bottom: 10px;
     text-transform:capitalize;

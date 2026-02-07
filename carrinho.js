@@ -321,7 +321,8 @@ btnFinalizarPedido.addEventListener("click", function(event) {
         const quantidade = card.querySelector(".quantidade").innerText;
         const valorTotalItem = card.querySelector(".valor").innerText;
 
-        mensagem += `🔹 *Item ${index + 1}:* ${produto.nome} (*${quantidade}x*)\n`;
+        let nomeProduto = produto.nome.replace(/<br\s*\/?>/gi, " ");
+        mensagem += `🔹 *Item ${index + 1}:* ${nomeProduto} (*${quantidade}x*)\n`;
         mensagem += `   📏 *Tamanho:* ${produto.ml}\n`;
         
         if (produto.acompanhamentos && produto.acompanhamentos.length > 0) {
