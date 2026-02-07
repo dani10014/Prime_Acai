@@ -326,6 +326,83 @@ document.addEventListener("click", function (event) {
                         </div>
                     </div>
                 </div>`
+            }else if(nomeProdutoCheck.includes("bolo-no-pote")){
+                modalHTML = `
+                <div class="card text-white" style="background-color: rgb(75, 0, 119);">
+                    ${midiaModalHtml}
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${nomeProduto}</h5>
+                        <p class="alert alert-info text-center small">${mlDoProduto}</p>
+                        <h5 class="alert alert-danger text-center">Selecione o sabor do bolo</h5>
+                        <h5 class="text-center border-bottom pb-2">Tamanho</h5>
+                        <div class="row text-start p-2 justify-content-center" style="background-color: rgb(255, 255, 255); color:black; border-radius:10px;">
+                            <div class="col-12">
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" name="sabor-bolo" type="radio" id="bolo-nutela" data-preco="20000">
+                                    <label class="form-check-label" for="bolo-nutela">Bolo no pote de Nutela</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" name="sabor-bolo" type="radio" id="bolo-chantininho" data-preco="20000">
+                                    <label class="form-check-label" for="bolo-chantininho">Bolo no pote de Chantininho</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" name="sabor-bolo" type="radio" id="bolo-cenoura" data-preco="20000">
+                                    <label class="form-check-label" for="bolo">Bolo no pote de Cenoura com nutela</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" name="sabor-bolo" type="radio" id="bolo-ninho-morango" data-preco="20000">
+                                    <label class="form-check-label" for="bolo-ninho-morango">Bolo no pote de Ninho com Morango</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">0 Gs</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>`;
+            }else if(nomeProdutoCheck.includes("bola-de-sorvete")){
+                modalHTML = `
+                <div class="card text-white" style="background-color: rgb(75, 0, 119);">
+                    ${midiaModalHtml}
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${nomeProduto}</h5>
+                        <p class="alert alert-info text-center small">${mlDoProduto}</p>
+                        <div class="alert alert-warning text-center">Selecione a quantidade de cada sabor</div>
+                        <div class="row text-start p-2 justify-content-center" style="background-color: rgb(255, 255, 255); color:black; border-radius:10px;">
+                            ${(() => {
+                                const sabores = ["Maracujá", "Abacaxi", "Ninho c/ Nutella", "Chocolate", "Bis", "Morango", "Leite Cond.", "Flocos", "Oreo", "Banana Caramelada", "Pavê", "Doce de Leite", "Chocomenta", "Chicle"];
+                                return sabores.map(sabor => `
+                                <div class="col-6 mb-2">
+                                    <div class="d-flex flex-column align-items-center border rounded p-2 h-100 bg-light text-dark">
+                                        <span class="text-center small fw-bold mb-2 sabor-nome">${sabor}</span>
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <button class="btn btn-sm btn-outline-danger rounded-circle p-0 d-flex align-items-center justify-content-center menos-sabor" style="width: 24px; height: 24px;">-</button>
+                                            <span class="mx-2 fw-bold small quantidade-sabor">0</span>
+                                            <button class="btn btn-sm btn-outline-success rounded-circle p-0 d-flex align-items-center justify-content-center mais-sabor" style="width: 24px; height: 24px;">+</button>
+                                        </div>
+                                    </div>
+                                </div>`).join('');
+                            })()}
+                        </div>
+                        <div class="sticky-footer">
+                            <div class="d-flex justify-content-between align-items-center alert alert-info mt-3 mb-3">
+                                <span class="fw-bold">Total:</span>
+                                <span class="fw-bold" id="preco-total">0 Gs</span>
+                            </div>
+                            <button class="btn btn-primary w-100 mt-3 btn-confirmar">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>`;
             }else if(nomeProdutoCheck.includes("sabor-unico") || nomeProdutoCheck.includes("salgadinhos")){
                     let produtoSelecionado = secaoAdicionarAcompanhamento;
                     
@@ -658,16 +735,52 @@ document.addEventListener("click", function (event) {
             const parseValor = (str) => parseInt(str.replace(/[^\d]/g, '')) || 0;
             const precoBase = parseValor(valorProduto);
 
-            inputsExtras.forEach(input => {
-                input.addEventListener('change', () => {
-                    let total = precoBase;
-                    inputsExtras.forEach(i => {
-                        if (i.checked) {
-                            const textoPreco = i.closest('.d-flex').querySelector('.alert-info').innerText;
-                            total += parseValor(textoPreco);
-                        }
+            const atualizarTotalGeral = () => {
+                let total = 0;
+                
+                if (nomeProdutoCheck.includes("bola-de-sorvete")) {
+                    const spansQuantidade = cardAcompanhamentos.querySelectorAll('.quantidade-sabor');
+                    let totalBolas = 0;
+                    spansQuantidade.forEach(span => {
+                        totalBolas += parseInt(span.innerText);
                     });
-                    displayTotal.innerText = total + " Gs";
+                    total = totalBolas * precoBase;
+                } else {
+                    total = precoBase;
+                }
+
+                inputsExtras.forEach(i => {
+                    if (i.checked) {
+                        const textoPreco = i.closest('.d-flex').querySelector('.alert-info').innerText;
+                        total += parseValor(textoPreco);
+                    }
+                });
+                displayTotal.innerText = total + " Gs";
+            };
+
+            inputsExtras.forEach(input => {
+                input.addEventListener('change', atualizarTotalGeral);
+            });
+            
+            const botoesMaisSabor = cardAcompanhamentos.querySelectorAll(".mais-sabor");
+            botoesMaisSabor.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    const span = e.target.closest("div").querySelector(".quantidade-sabor");
+                    let qtd = parseInt(span.innerText);
+                    span.innerText = qtd + 1;
+                    atualizarTotalGeral();
+                });
+            });
+
+            const botoesMenosSabor = cardAcompanhamentos.querySelectorAll(".menos-sabor");
+            botoesMenosSabor.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    const span = e.target.closest("div").querySelector(".quantidade-sabor");
+                    let qtd = parseInt(span.innerText);
+                    if (qtd > 0) {
+                        span.innerText = qtd - 1;
+                        atualizarTotalGeral();
+                    }
                 });
             });
 
@@ -698,6 +811,15 @@ document.addEventListener("click", function (event) {
                 });
             });
 
+            const inputsSaborBolo = cardAcompanhamentos.querySelectorAll('input[name="sabor-bolo"]');
+            inputsSaborBolo.forEach(input => {
+                input.addEventListener('change', () => {
+                    if(input.checked){
+                        displayTotal.innerText = input.getAttribute('data-preco') + " Gs";
+                    }
+                });
+            });
+
             let btnConfirmar = document.querySelector(".btn-confirmar");
             
             btnConfirmar.addEventListener("click", () => {
@@ -708,6 +830,25 @@ document.addEventListener("click", function (event) {
                     let recheioSelecionado = Array.from(opcoesRecheio).some(radio => radio.checked);
                     if (!recheioSelecionado) {
                         alert("Por favor, selecione um recheio antes de adicionar ao carrinho.");
+                        return;
+                    }
+                }
+
+                let opcoesSaborBolo = Produto.querySelectorAll('input[name="sabor-bolo"]');
+                if (opcoesSaborBolo.length > 0) {
+                    let saborSelecionado = Array.from(opcoesSaborBolo).some(radio => radio.checked);
+                    if (!saborSelecionado) {
+                        alert("Por favor, selecione um sabor de bolo.");
+                        return;
+                    }
+                }
+
+                let opcoesSaborSorvete = Produto.querySelectorAll('.quantidade-sabor');
+                if (opcoesSaborSorvete.length > 0) {
+                    let totalBolas = 0;
+                    opcoesSaborSorvete.forEach(span => totalBolas += parseInt(span.innerText));
+                    if (totalBolas === 0) {
+                        alert("Por favor, selecione pelo menos uma bola de sorvete.");
                         return;
                     }
                 }
@@ -742,9 +883,20 @@ document.addEventListener("click", function (event) {
                     preco: Produto.querySelector("#preco-total").innerText
                 }
 
-                let listaAcompanhamentos = Array.from(inputsAcompanhamentos)
-                    .filter(input => input.checked && input.name !== 'Ml-suco' && input.name !== 'tamanho-frango')
-                    .map(input => input.nextElementSibling.innerText);
+                let listaAcompanhamentos = [];
+                if (nomeProdutoCheck.includes("bola-de-sorvete")) {
+                     Produto.querySelectorAll(".quantidade-sabor").forEach(span => {
+                        let qtd = parseInt(span.innerText);
+                        if(qtd > 0) {
+                            let nomeSabor = span.closest(".d-flex.flex-column").querySelector(".sabor-nome").innerText;
+                            listaAcompanhamentos.push(`${nomeSabor} (${qtd}x)`);
+                        }
+                     });
+                } else {
+                    listaAcompanhamentos = Array.from(inputsAcompanhamentos)
+                        .filter(input => input.checked && input.name !== 'Ml-suco' && input.name !== 'tamanho-frango')
+                        .map(input => input.nextElementSibling.innerText);
+                }
                 
                 let listaAdicionais = Array.from(inputsAdicionais)
                     .filter(input => input.checked)
