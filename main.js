@@ -8,6 +8,10 @@ let alertaAdicao = document.querySelector(".alerta")
 let contadorCarrinho = document.querySelector(".contador-de-produtos");
 let modalBootstrap;
 
+if (mensagemFechado) {
+    modalBootstrap = new bootstrap.Modal(mensagemFechado);
+}
+
 function atualizarContador() {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     if (contadorCarrinho) {
