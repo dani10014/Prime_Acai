@@ -23,6 +23,7 @@ function atualizarBotaoFlutuante(carrinho) {
                 let preco = parseInt(item.preco.replace(/[^\d]/g, '')) || 0;
                 total += preco;
             });
+            total += 10000;
             spanValor.innerText = `${total.toLocaleString('pt-BR')} Gs`;
             botaoFlutuante.classList.add("ativo");
         } else {
