@@ -358,7 +358,7 @@ btnFinalizarPedido.addEventListener("click", function(event) {
     mensagem += `----------------------------------\n`;
     mensagem += `⏳ *Aguarde a confirmação do seu pedido!*\n`;
 
-    let numeroWhatsApp = "556796548981"; 
+    let numeroWhatsApp = "+595976652307"; 
     let url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
     
     window.open(url, "_blank");
